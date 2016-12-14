@@ -22,4 +22,13 @@ Route::get('/', function () {
 |
 */
 
+Route::post('question/create/option', 'QuestionController@createOption');
+Route::delete('question/option/{id}', 'QuestionController@destroyOption');
+Route::get('question/{id}/modal', 'QuestionController@showModal');
+Route::get('question/{id}/option/{option_id}/answer', 'QuestionController@isAnswer');
+Route::get('question/categories', 'QuestionController@getCategories');
+Route::get('question/{id}/add/category/{name}', 'QuestionController@addCategory');
+Route::delete('question/{id}/category/{name}', 'QuestionController@destroyQestionCategory');
+
 Route::resource('question', 'QuestionController');
+Route::resource('category', 'CategoryController');

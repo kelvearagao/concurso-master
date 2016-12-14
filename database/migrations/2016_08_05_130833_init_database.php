@@ -34,28 +34,24 @@ class InitDatabase extends Migration
         });
 
         // Questão com várias opções e uma resposta
-            /*
             Schema::create('question_options', function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('question_id')->unsigned();
                 $table->integer('option_id')->unsigned();
                 $table->boolean('value');
 
-                $table->foreign('question_id')->references('id')->on('question_id')->onDelete('cascade'); 
-                $table->foreign('option_id')->references('id')->on('option_id')->onDelete('cascade');
+                $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade'); 
+                $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade');
             });
-            */
 
-            /*
             Schema::create('question_options_answers', function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('question_id')->unsigned();
                 $table->integer('option_id')->unsigned();
 
-                $table->foreign('question_id')->references('id')->on('question_id')->onDelete('cascade'); 
-                $table->foreign('option_id')->references('id')->on('option_id')->onDelete('cascade');
+                $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade'); 
+                $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade');
             });
-            */
 
         // Questão com opções booleanas
         Schema::create('boolean_options', function (Blueprint $table) {
@@ -89,6 +85,8 @@ class InitDatabase extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('question_options_answers');
+        Schema::dropIfExists('question_options');
         Schema::dropIfExists('boolean_options');
         Schema::dropIfExists('link_options');
         Schema::dropIfExists('questions');

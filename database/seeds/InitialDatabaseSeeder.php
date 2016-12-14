@@ -80,21 +80,26 @@ class InitialDatabaseSeeder extends Seeder
         ]);
 
         // Questões booleanas
-        DB::table('boolean_options')->insert([
+        DB::table('question_options_answers')->insert([
 			[
 				'question_id' => 1,
-				'option_id' => 1,
-				'value' => false
+				'option_id' => 2
+			]
+		]);
+
+        // Questões booleanas
+        DB::table('question_options')->insert([
+			[
+				'question_id' => 1,
+				'option_id' => 1
 			],
 			[
 				'question_id' => 1,
-				'option_id' => 2,
-				'value' => true
+				'option_id' => 2
 			],
 			[
 				'question_id' => 1,
-				'option_id' => 3,
-				'value' => false
+				'option_id' => 3
 			]
         ]);
 
